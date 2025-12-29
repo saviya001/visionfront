@@ -15,13 +15,13 @@ export default {
       options: { source: 'title' }
     },
     {
-      name: 'image',
+      name: 'mainImage',
       title: 'Main Image',
       type: 'image',
       options: { hotspot: true },
     },
     {
-      name: 'description',
+      name: 'smallDescription', 
       title: 'Short Description',
       type: 'text',
       rows: 3,
@@ -34,12 +34,13 @@ export default {
       type: 'string',
       options: {
         list: [
-          { title: 'Company Product (Our Own)', value: 'product' },
-          { title: 'Client Project (For Others)', value: 'client' },
+       
+          { title: 'Signature Product (Our Software)', value: 'signature' },
+          { title: 'Client Success Story (Client)', value: 'client' },
         ],
         layout: 'radio'
       },
-      validation: (Rule: any) => Rule.required(),
+      validation: (Rule) => Rule.required(),
     },
 
     // --- Single Page Content (Rich Text) ---
@@ -49,7 +50,15 @@ export default {
       type: 'array',
       of: [{ type: 'block' }, { type: 'image' }],
     },
-
+    {
+      name: 'technologies',
+      title: 'Technologies Used',
+      type: 'array',
+      of: [{type: 'string'}],
+      options: {
+        layout: 'tags'
+      }
+    },
     {
       name: 'link',
       title: 'Live Link',

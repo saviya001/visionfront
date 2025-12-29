@@ -1,15 +1,23 @@
-import { client, urlFor } from "@/lib/sanity";
+import { client } from "@/lib/sanity"; 
+import imageUrlBuilder from "@sanity/image-url";
 import Image from "next/image";
 import Link from "next/link";
 import { FaArrowRight, FaStar } from "react-icons/fa";
 
+
+const builder = imageUrlBuilder(client);
+function urlFor(source: any) {
+  return builder.image(source);
+}
+
 async function getProducts() {
-  const query = `*[_type == "project" && category == "product"] {
+
+  const query = `*[_type == "project" && category == "signature"] {
     _id,
     title,
-    description,
+    smallDescription,
     "slug": slug.current,
-    image
+    mainImage
   }`;
   return await client.fetch(query);
 }
@@ -18,15 +26,13 @@ export default async function ProductsPage() {
   const products = await getProducts();
 
   return (
-    // 1. Base: Deep Dark Blue (No Grid)
+   
     <div className="min-h-screen bg-[#020617] py-24 px-6 relative overflow-hidden">
       
-      {/* --- NEW BACKGROUND: Aurora Gradient (Fluid Glows) --- */}
-      
-      {/* Top Left Glow (Purple/Indigo) */}
+  
       <div className="absolute top-[-20%] left-[-10%] w-[700px] h-[700px] bg-indigo-600/20 rounded-full blur-[120px] mix-blend-screen pointer-events-none animate-pulse"></div>
       
-      {/* Bottom Right Glow (Blue/Cyan) */}
+      
       <div className="absolute bottom-[-20%] right-[-10%] w-[700px] h-[700px] bg-blue-600/20 rounded-full blur-[120px] mix-blend-screen pointer-events-none"></div>
 
       {/* Center Subtle Glow */}
@@ -53,16 +59,17 @@ export default async function ProductsPage() {
           {products.length > 0 ? (
             products.map((project: any, index: number) => (
               
-              // Card Design: Modern Frosted Glass (No borders, just shadow and blur)
+              // Card Design: Modern Frosted Glass
               <div key={project._id} className="group relative bg-white/[0.03] backdrop-blur-2xl rounded-[40px] p-2 overflow-hidden hover:bg-white/[0.06] transition-all duration-700 hover:shadow-[0_0_60px_-15px_rgba(79,70,229,0.2)]">
                 
                 <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
                     
                     {/* Image Section (Large & Cinematic) */}
                     <div className="w-full lg:w-3/5 h-[350px] lg:h-[450px] relative rounded-[32px] overflow-hidden shadow-2xl">
-                        {project.image && (
+                     
+                        {project.mainImage && (
                             <Image
-                            src={urlFor(project.image).url()}
+                            src={urlFor(project.mainImage).url()}
                             alt={project.title}
                             fill
                             className="object-cover transition-transform duration-1000 group-hover:scale-105"
@@ -82,12 +89,14 @@ export default async function ProductsPage() {
                             {project.title}
                         </h2>
                         
+                      
                         <p className="text-slate-400 text-lg leading-relaxed mb-10">
-                            {project.description}
+                            {project.smallDescription}
                         </p>
                         
+                     
                         <Link 
-                            href={`/projects/${project.slug}`}
+                            href={`/project/${project.slug}`}
                             className="group/btn w-fit flex items-center gap-4 text-white text-lg font-semibold hover:text-indigo-400 transition-colors"
                         >
                             <span className="relative">
@@ -105,7 +114,7 @@ export default async function ProductsPage() {
             ))
           ) : (
             <div className="text-center py-32">
-                <p className="text-slate-500">No products found yet.</p>
+                <p className="text-slate-500">No signature products found yet.</p>
             </div>
           )}
         </div>

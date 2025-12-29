@@ -1,15 +1,23 @@
-import { client, urlFor } from "@/lib/sanity";
+import { client } from "@/lib/sanity"; // Library Path එක හරියට තියෙනවද බලන්න
+import imageUrlBuilder from "@sanity/image-url";
 import Image from "next/image";
 import Link from "next/link";
 import { FaArrowRight, FaBriefcase, FaGlobeAmericas } from "react-icons/fa";
 
+// Image Builder Setup
+const builder = imageUrlBuilder(client);
+function urlFor(source: any) {
+  return builder.image(source);
+}
+
 async function getClientProjects() {
+
   const query = `*[_type == "project" && category == "client"] {
     _id,
     title,
-    description,
+    smallDescription,
     "slug": slug.current,
-    image
+    mainImage
   }`;
   return await client.fetch(query);
 }
@@ -18,19 +26,18 @@ export default async function ClientWorkPage() {
   const projects = await getClientProjects();
 
   return (
-    // 1. Base Background: Deep Midnight Blue
+ 
     <div className="min-h-screen bg-[#020617] py-24 px-6 relative overflow-hidden">
       
       {/* --- BACKGROUND ANIMATIONS --- */}
       
-      {/* 2. Grid Pattern (Tech Look) */}
+
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:40px_40px] opacity-20"></div>
       
-      {/* 3. Animated Glowing Orbs (Breathes slowly) */}
-      {/* Blue Glow - Top Right */}
+
       <div className="absolute -top-[10%] -right-[10%] w-[600px] h-[600px] bg-blue-600/20 rounded-full blur-[120px] animate-pulse"></div>
       
-      {/* Purple Glow - Bottom Left */}
+  
       <div className="absolute -bottom-[10%] -left-[10%] w-[600px] h-[600px] bg-purple-600/20 rounded-full blur-[120px] animate-pulse delay-700"></div>
 
 
@@ -54,15 +61,17 @@ export default async function ClientWorkPage() {
           {projects.length > 0 ? (
             projects.map((project: any) => (
               <Link 
-                href={`/projects/${project.slug}`} 
+            
+                href={`/project/${project.slug}`} 
                 key={project._id}
                 className="group relative bg-slate-900/50 backdrop-blur-md border border-white/5 rounded-2xl overflow-hidden hover:border-purple-500/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/20"
               >
                 {/* Image Section */}
                 <div className="relative h-64 w-full overflow-hidden">
-                  {project.image && (
+                 
+                  {project.mainImage && (
                     <Image
-                      src={urlFor(project.image).url()}
+                      src={urlFor(project.mainImage).url()}
                       alt={project.title}
                       fill
                       className="object-cover transition-transform duration-700 group-hover:scale-110"
@@ -80,8 +89,10 @@ export default async function ClientWorkPage() {
                   <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-purple-300 transition-colors">
                     {project.title}
                   </h3>
+                  
+          
                   <p className="text-gray-400 text-sm line-clamp-3 mb-6 leading-relaxed">
-                    {project.description}
+                    {project.smallDescription}
                   </p>
                   
                   <div className="flex items-center text-white text-sm font-semibold group-hover:text-purple-400 transition-colors gap-2">

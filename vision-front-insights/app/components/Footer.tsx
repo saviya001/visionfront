@@ -3,8 +3,7 @@ import { FaFacebookF, FaLinkedinIn, FaYoutube } from 'react-icons/fa';
 
 export default function Footer() {
   return (
-    // 1. bg-black එහෙම්මම තිබ්බා (ඔයා ඉල්ලපු නිසා).
-    // 2. mt-20 අයින් කළා (එතකොට අර හිස් ඉඩ එන්නේ නෑ).
+
     <footer className="bg-black border-t border-white/10 pt-16 pb-8 relative overflow-hidden">
       
       {/* Background Glow Effect */}
@@ -52,7 +51,7 @@ export default function Footer() {
 
             {/* YouTube */}
             <a 
-              href="https://www.youtube.com/" 
+              href="https://www.youtube.com/@VFI-m5i" 
               target="_blank" 
               rel="noopener noreferrer"
               className="w-12 h-12 flex items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition-all duration-300 hover:bg-white hover:text-[#ff0000] hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(255,0,0,0.6)]"

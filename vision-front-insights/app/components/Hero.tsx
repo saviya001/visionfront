@@ -4,8 +4,7 @@ import { FaArrowRight } from "react-icons/fa";
 
 export default function Hero() {
   return (
-    // 1. වෙනස්කම: 'min-h-screen' අයින් කරලා 'py-32 lg:py-48' දැම්මා.
-    // දැන් Hero එක Screen එකේ සයිස් එකටම ඇදෙන්නේ නෑ, අකුරු තියෙන ප්‍රමාණයට විතරයි උස හැදෙන්නේ.
+
     <section className="relative py-32 lg:py-48 flex items-center justify-center overflow-hidden bg-[#020617]">
       
       {/* 2. Spotlight Effect */}

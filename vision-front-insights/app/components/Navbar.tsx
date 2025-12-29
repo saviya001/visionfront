@@ -1,13 +1,13 @@
 "use client";
 import Link from 'next/link';
-import { useState } from 'react'; // State පාලනය කරන්න
-import { FaBars, FaTimes, FaChevronDown } from 'react-icons/fa'; // අයිකන්ස්
+import { useState } from 'react'; 
+import { FaBars, FaTimes, FaChevronDown } from 'react-icons/fa'; 
 
 export default function Navbar() {
-  const [nav, setNav] = useState(false); // මෙනු එක ඇරිලාද (true) වැහිලාද (false) බලන ස්විච් එක
+  const [nav, setNav] = useState(false); 
 
   const handleNav = () => {
-    setNav(!nav); // බටන් එක ඔබන වාරයක් පාසා true/false මාරු කරයි
+    setNav(!nav); 
   };
 
   return (
@@ -24,7 +24,7 @@ export default function Navbar() {
           </span>
         </Link>
         
-        {/* --- DESKTOP MENU (Laptop වලට විතරයි) --- */}
+        {/* --- DESKTOP MENU (Laptop ) --- */}
         <div className="hidden md:block w-full md:w-auto">
           <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 items-center">
             <li><Link href="/" className="block py-2 px-3 text-white hover:text-indigo-400 transition-colors">Home</Link></li>
@@ -56,7 +56,7 @@ export default function Navbar() {
           </ul>
         </div>
 
-        {/* --- MOBILE BURGER ICON (Phone වලට විතරයි) --- */}
+        {/* --- MOBILE BURGER ICON (Phone ) --- */}
         <div onClick={handleNav} className="md:hidden z-50 cursor-pointer text-white">
           {nav ? <FaTimes size={25} /> : <FaBars size={25} />}
         </div>
