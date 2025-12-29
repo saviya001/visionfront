@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaArrowRight, FaStar } from "react-icons/fa";
 
+export const revalidate = 60;
+
 
 const builder = imageUrlBuilder(client);
 function urlFor(source: any) {
