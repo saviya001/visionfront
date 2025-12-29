@@ -96,7 +96,7 @@ export default async function ClientWorkPage() {
                   </p>
                   
                   <div className="flex items-center text-white text-sm font-semibold group-hover:text-purple-400 transition-colors gap-2">
-                    Read Story <FaArrowRight className="text-xs transition-transform group-hover:translate-x-1" />
+                    Read Project <FaArrowRight className="text-xs transition-transform group-hover:translate-x-1" />
                   </div>
                 </div>
               </Link>
