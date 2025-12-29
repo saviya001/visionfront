@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaArrowRight, FaCalendarAlt, FaUser } from "react-icons/fa";
 
+export const revalidate = 60;
+
 async function getPosts() {
  
   const query = `*[_type == "blog"] | order(publishedAt desc) {
@@ -43,7 +45,7 @@ export default async function BlogPage() {
             Tech <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-500">Insights</span>
           </h1>
           <p className="text-slate-400 max-w-2xl mx-auto text-lg leading-relaxed">
-            Explore the latest trends in AI, Web Development, and Software Engineering directly from our experts.
+            Explore the latest trends in AI Web Development and Software Engineering directly from our experts.
           </p>
         </div>
 
