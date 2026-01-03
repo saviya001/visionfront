@@ -9,10 +9,12 @@ const inter = Inter({ subsets: ["latin"] });
 
 // 🟢 SEO & Social Media Metadata (Updated)
 export const metadata: Metadata = {
-  metadataBase: new URL('https://visionfront.vercel.app'),
+  // 1. මෙතන ඔයාගේ අලුත් ඩොමේන් එක දැම්මා
+  metadataBase: new URL('https://visionfrontinsights.com'), 
+
   title: {
     default: "VisionFront Insights | Intelligent Reality & AI Solutions",
-    template: "%s | VisionFront Insights" // හැම පිටුවකම අගට මේ සම්පූර්ණ නම වැටෙයි
+    template: "%s | VisionFront Insights" 
   },
   description: "VisionFront Insights specializes in AI-driven web development, Fake CV Detection, Deepfake Security, and high-performance SaaS platforms in Sri Lanka.",
   keywords: [
@@ -24,11 +26,19 @@ export const metadata: Metadata = {
     "Fake CV Detection", 
     "vfi"
   ],
-  authors: [{ name: "Savindu", url: "https://visionfront.vercel.app" }],
+  authors: [{ name: "Savindu", url: "https://visionfrontinsights.com" }],
+  
+
+  icons: {
+    icon: '/logo.svg',
+    shortcut: '/logo.svg',
+    apple: '/logo.svg',
+  },
+
   openGraph: {
     title: "VisionFront Insights - Intelligent Reality",
     description: "Empowering businesses with Next-Gen AI & Web Solutions.",
-    url: "https://visionfront.vercel.app",
+    url: "https://visionfrontinsights.com",
     siteName: "VisionFront Insights",
     images: [
       {

@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { useState } from 'react'; 
 import { FaBars, FaTimes, FaChevronDown } from 'react-icons/fa'; 
+import Image from 'next/image';
 
 export default function Navbar() {
   const [nav, setNav] = useState(false); 
@@ -12,15 +13,23 @@ export default function Navbar() {
 
   return (
     <nav className="fixed w-full z-50 top-0 start-0 border-b border-white/5 bg-[#020617]/90 backdrop-blur-md">
-      <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between p-4">
+      <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between p-1">
         
         {/* Logo Section */}
         <Link href="/" className="flex items-center space-x-2 z-50">
-          <div className="w-8 h-8 bg-gradient-to-br from-indigo-600 to-violet-600 rounded-lg flex items-center justify-center">
-            <span className="text-white font-bold text-lg">V</span>
+          
+          {/* Logo Image */}
+          <div className="relative w-20 h-20">
+             <Image 
+               src="/logo.png" 
+               alt="VisionFront Logo" 
+               fill
+               className="object-contain"
+             />
           </div>
+
           <span className="self-center text-2xl font-bold whitespace-nowrap text-white tracking-wide">
-            Vision<span className="text-indigo-400">Front</span>
+            VisionFront<span className="text-indigo-400"> INSIGHTS</span>
           </span>
         </Link>
         

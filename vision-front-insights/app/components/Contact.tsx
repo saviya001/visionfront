@@ -47,7 +47,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="text-sm text-gray-400">Email Us</p>
-                  <a href="mailto:info@visionfront.com" className="text-white font-medium hover:text-indigo-400 transition-colors">info@visionfront.com</a>
+                  <a href="mailto:info@visionfront.com" className="text-white font-medium hover:text-indigo-400 transition-colors">info@visionfrontinsights.com</a>
                 </div>
               </div>
               <div className="flex items-center gap-4 group">

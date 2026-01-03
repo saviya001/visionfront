@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { FaFacebookF, FaLinkedinIn, FaYoutube } from 'react-icons/fa';
+import Image from 'next/image';
 
 export default function Footer() {
   return (
@@ -11,14 +12,22 @@ export default function Footer() {
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col items-center text-center">
         
-        {/* Brand Name */}
+        {/* Brand Name & Logo */}
         <div className="mb-6">
-          <Link href="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-lg">V</span>
+          <Link href="/" className="flex items-center gap-3">
+            
+            {/* Logo Image */}
+            <div className="relative w-20 h-20"> 
+               <Image 
+                 src="/logo.png" 
+                 alt="VisionFront Logo" 
+                 fill
+                 className="object-contain"
+               />
             </div>
+
             <span className="text-2xl font-bold text-white tracking-wide">
-              Vision<span className="text-indigo-400">Front Insight</span>
+              VisionFront<span className="text-indigo-400"> Insights</span>
             </span>
           </Link>
         </div>
@@ -41,7 +50,7 @@ export default function Footer() {
 
             {/* Facebook */}
             <a 
-              href="https://www.facebook.com/" 
+              href="https://www.facebook.com/share/1DmGA81NFR/?mibextid=wwXIfr" 
               target="_blank" 
               rel="noopener noreferrer"
               className="w-12 h-12 flex items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition-all duration-300 hover:bg-white hover:text-[#1877f2] hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(24,119,242,0.6)]"
@@ -51,7 +60,7 @@ export default function Footer() {
 
             {/* YouTube */}
             <a 
-              href="https://www.youtube.com/@VFI-m5i" 
+              href="https://www.youtube.com/channel/UC9G1P9VqwcdVht8S3eNNspA" 
               target="_blank" 
               rel="noopener noreferrer"
               className="w-12 h-12 flex items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition-all duration-300 hover:bg-white hover:text-[#ff0000] hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(255,0,0,0.6)]"
@@ -65,7 +74,7 @@ export default function Footer() {
 
         {/* Copyright */}
         <p className="text-gray-500 text-sm">
-          &copy; {new Date().getFullYear()} Vision Front Insights. All rights reserved.
+          &copy; {new Date().getFullYear()} VisionFront Insights. All rights reserved.
         </p>
       </div>
     </footer>
