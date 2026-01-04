@@ -74,7 +74,7 @@ export default function Footer() {
 
         {/* Copyright */}
         <p className="text-gray-500 text-sm">
-          &copy; {new Date().getFullYear()} VisionFront Insights. All rights reserved.
+          &copy; {new Date().getFullYear()} VisionFront Insights - VFI.    All rights reserved.
         </p>
       </div>
     </footer>

@@ -7,9 +7,8 @@ import Footer from "./components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
-// 🟢 SEO & Social Media Metadata (Updated)
+// 🟢 SEO & Social Media Metadata (Existing)
 export const metadata: Metadata = {
-  // 1. මෙතන ඔයාගේ අලුත් ඩොමේන් එක දැම්මා
   metadataBase: new URL('https://visionfrontinsights.com'), 
 
   title: {
@@ -24,10 +23,10 @@ export const metadata: Metadata = {
     "AI Development", 
     "Web Design", 
     "Fake CV Detection", 
-    "vfi"
+    "vfi",
+    "Vision Front" // Added space version just in case
   ],
   authors: [{ name: "Savindu", url: "https://visionfrontinsights.com" }],
-  
 
   icons: {
     icon: '/logo.svg',
@@ -53,17 +52,44 @@ export const metadata: Metadata = {
   },
 };
 
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  // 🟢 Google සඳහා Schema Markup (JSON-LD)
+  // මේකෙන් තමයි VFI සහ Vision Front කියන නම් Google එකට අඳුන්වා දෙන්නේ.
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'VisionFront Insights',
+    url: 'https://visionfrontinsights.com',
+    logo: 'https://visionfrontinsights.com/logo.svg',
+    alternateName: ['VFI', 'Vision Front', 'VisionFront'], // 👈 මෙන්න මැජික් එක!
+    sameAs: [
+      'https://www.linkedin.com/company/visionfront-insights',
+      'https://www.facebook.com/share/1DmGA81NFR/?mibextid=wwXIfr',
+      'https://www.youtube.com/channel/UC9G1P9VqwcdVht8S3eNNspA'
+    ],
+    contactPoint: {
+      '@type': 'ContactPoint',
+      telephone: '+94-71-751-0640',
+      contactType: 'customer service',
+      areaServed: 'LK'
+    }
+  }
+
   return (
     <html lang="en" className="scroll-smooth">
-      {/* 1. Global Background Color & Font Settings */}
       <body className={`${inter.className} bg-[#020617] text-white antialiased selection:bg-purple-500 selection:text-white`}>
         
+        {/* 🟢 Inject Schema Script to Head/Body */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+
         {/* 2. Fixed Background Glow Effects */}
         <div className="fixed top-0 left-0 w-full h-full z-[-1] pointer-events-none">
             {/* Top Center Blue Glow */}
