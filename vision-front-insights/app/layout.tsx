@@ -7,7 +7,7 @@ import Footer from "./components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
-// 🟢 SEO & Social Media Metadata (Existing)
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://visionfrontinsights.com'), 
 
